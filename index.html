@@ -887,18 +887,19 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 <input type="hidden" name="_kb_form_id" value="1130_0892c5-e7"><input type="hidden" name="_kb_form_post_id" value="1130"><input type="hidden" name="action" value="kb_process_ajax_submit"><input class="kadence-blocks-field verify" type="text" name="_kb_verify_email" autocomplete="new-password" aria-hidden="true" placeholder="Email" tabindex="-1" data-1p-ignore="true" data-lpignore="true"><div class="kadence-blocks-form-field kb-submit-field kb-field-desk-width-100"><button class="kb-forms-submit button kb-button-size-standard kb-button-width-auto">C&rsquo;est parti !</button></div>
 </form></div>
 <noscript>
-	<p id="thankYouMessage" style="display: none; color: #2b6cb0; font-weight: bold; border: 1px solid #4299e1; background-color: #ebf8ff; margin-top: 10px; padding: 10px;">
-		Message envoyé avec succès, nous vous remercions de votre message !
-	</p>
-	
-	<script>
-		document.getElementById('kbForm').addEventListener('submit', function(e) {
-			e.preventDefault(); // Empêche le rechargement complet
-			document.getElementById('thankYouMessage').style.display = 'block'; // Affiche le message
-		});
-	</script>
 
 <div class="kadence-blocks-form-message kadence-blocks-form-warning">Veuillez activer JavaScript dans votre navigateur pour envoyer le formulaire.</div>
+<p id="thankYouMessage" style="display: none; color: #2b6cb0; font-weight: bold; border: 1px solid #4299e1; background-color: #ebf8ff; margin-top: 10px; padding: 10px;">
+	Message envoyé avec succès, nous vous remercions de votre message !
+</p>
+
+<script>
+	document.getElementById('kbForm').addEventListener('submit', function(e) {
+		e.preventDefault(); // Empêche le rechargement complet
+		document.getElementById('thankYouMessage').style.display = 'block'; // Affiche le message
+	});
+</script>
+
 <style>.kadence-form-1130_0892c5-e7 .kadence-blocks-form-field.kb-submit-field { display: none; }</style>
 </noscript>
 
@@ -1570,37 +1571,39 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 					document.currentScript?.remove();
 				} )();</script>
 
+				<script>
+					// Liste des identifiants des formulaires
+					const formIds = ['wpforms-form-1749', 'wpforms-form-2001', 'wpforms-form-2014', 'wpforms-form-2273' ];
+				
+					// Appliquer le comportement à chaque formulaire
+					formIds.forEach(function(id) {
+						const form = document.getElementById(id);
+				
+						if (form) {
+							// Gestion de la soumission
+							form.addEventListener('submit', function(e) {
+								e.preventDefault(); // Empêche l'envoi réel
+				
+								// Réinitialise les champs
+								this.reset();
+				
+								// Redirection
+								window.location.href = 'http://le-petit-gourmet/paiement/';
+							});
+				
+							// Empêche la soumission avec la touche Entrée
+							form.addEventListener('keydown', function(e) {
+								if (e.key === 'Enter') {
+									e.preventDefault(); // Bloque l'action par défaut
+								}
+							});
+						}
+					});
+				</script>
+
 </div>
 
-<script>
-	// Liste des identifiants des formulaires
-	const formIds = ['wpforms-form-1749', 'wpforms-form-2001', 'wpforms-form-2014', 'wpforms-form-2273' ];
 
-	// Appliquer le comportement à chaque formulaire
-	formIds.forEach(function(id) {
-		const form = document.getElementById(id);
-
-		if (form) {
-			// Gestion de la soumission
-			form.addEventListener('submit', function(e) {
-				e.preventDefault(); // Empêche l'envoi réel
-
-				// Réinitialise les champs
-				this.reset();
-
-				// Redirection
-				window.location.href = 'http://le-petit-gourmet/paiement/';
-			});
-
-			// Empêche la soumission avec la touche Entrée
-			form.addEventListener('keydown', function(e) {
-				if (e.key === 'Enter') {
-					e.preventDefault(); // Bloque l'action par défaut
-				}
-			});
-		}
-	});
-</script>
 
 <!-- .wpforms-field-container --><div class="wpforms-submit-container">
 <input type="hidden" name="wpforms[id]" value="1749"><input type="hidden" name="page_title" value="Accueil"><input type="hidden" name="page_url" value="/?simply_static_page=1996"><input type="hidden" name="page_id" value="1130"><input type="hidden" name="wpforms[post_id]" value="1130"><button type="submit" name="wpforms[submit]" id="wpforms-submit-1749" class="wpforms-submit" data-alt-text="Envoi..." data-submit-text="Validation " aria-live="assertive" value="wpforms-submit">Validation </button><img src="/wp-content/plugins/wpforms-lite/assets/images/submit-spin.svg" class="wpforms-submit-spinner" style="display: none;" width="26" height="26" alt="Chargement en cours">
