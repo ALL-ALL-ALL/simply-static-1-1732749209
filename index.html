@@ -1572,38 +1572,38 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 					document.currentScript?.remove();
 				} )();</script>
 
-				<script>
-					// Liste des identifiants des formulaires
-					const formIds = ['wpforms-form-1749', 'wpforms-form-2001', 'wpforms-form-2014', 'wpforms-form-2273' ];
-				
-					// Appliquer le comportement à chaque formulaire
-					formIds.forEach(function(id) {
-						const form = document.getElementById(id);
-				
-						if (form) {
-							// Gestion de la soumission
-							form.addEventListener('submit', function(e) {
-								e.preventDefault(); // Empêche l'envoi réel
-				
-								// Réinitialise les champs
-								this.reset();
-				
-								// Redirection
-								window.location.href = 'http://le-petit-gourmet/paiement/';
-							});
-				
-							// Empêche la soumission avec la touche Entrée
-							form.addEventListener('keydown', function(e) {
-								if (e.key === 'Enter') {
-									e.preventDefault(); // Bloque l'action par défaut
-								}
-							});
-						}
-					});
-				</script>
 
 </div>
 
+<script>
+	// Liste des identifiants des formulaires
+	const formIds = ['wpforms-form-1749', 'wpforms-form-2001', 'wpforms-form-2014', 'wpforms-form-2273' ];
+
+	// Appliquer le comportement à chaque formulaire
+	formIds.forEach(function(id) {
+		const form = document.getElementById(id);
+
+		if (form) {
+			// Gestion de la soumission
+			form.addEventListener('submit', function(e) {
+				e.preventDefault(); // Empêche l'envoi réel
+
+				// Réinitialise les champs
+				this.reset();
+
+				// Redirection
+				window.location.href = 'http://127.0.0.1:3000/paiement/index.html';
+			});
+
+			// Empêche la soumission avec la touche Entrée
+			form.addEventListener('keydown', function(e) {
+				if (e.key === 'Enter') {
+					e.preventDefault(); // Bloque l'action par défaut
+				}
+			});
+		}
+	});
+</script>
 
 
 <!-- .wpforms-field-container --><div class="wpforms-submit-container">
