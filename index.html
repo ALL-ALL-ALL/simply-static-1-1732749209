@@ -1580,32 +1580,47 @@ span.kt-blocks-info-box-link-wrap.info-box-link.kt-blocks-info-box-media-align-t
 
 <script>
 	// Liste des identifiants des formulaires
-	const formIds = ['wpforms-form-1749', 'wpforms-form-2001', 'wpforms-form-2014', 'wpforms-form-2273' ];
+const formIds = ['wpforms-form-1749', 'wpforms-form-2001', 'wpforms-form-2014', 'wpforms-form-2273'];
 
-	// Appliquer le comportement à chaque formulaire
-	formIds.forEach(function(id) {
-		const form = document.getElementById(id);
+// Appliquer le comportement à chaque formulaire
+formIds.forEach(function (id) {
+  const form = document.getElementById(id);
 
-		if (form) {
-			// Gestion de la soumission
-			form.addEventListener('submit', function(e) {
-				e.preventDefault(); // Empêche l'envoi réel
+  if (form) {
+    // Gestion de la soumission
+    form.addEventListener('submit', function (e) {
+      let allValid = true;
 
-				// Réinitialise les champs
-				this.reset();
+      // Vérifie les champs requis
+      const requiredFields = form.querySelectorAll("[required]");
+      requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+          allValid = false;
+          field.style.border = "2px solid red"; // Met en évidence les champs invalides
+        } else {
+          field.style.border = ""; // Réinitialise la bordure pour les champs valides
+        }
+      });
 
-				// Redirection
-				window.location.href = 'http://127.0.0.1:3000/paiement/index.html';
-			});
+      // Si tous les champs sont valides
+      if (allValid) {
+        e.preventDefault(); // Empêche l'envoi réel
+        this.reset(); // Réinitialise les champs
+        window.location.href = 'http://127.0.0.1:3000/paiement/index.html'; // Redirige
+      } else {
+        e.preventDefault(); // Bloque la soumission si des champs sont invalides
+      }
+    });
 
-			// Empêche la soumission avec la touche Entrée
-			form.addEventListener('keydown', function(e) {
-				if (e.key === 'Enter') {
-					e.preventDefault(); // Bloque l'action par défaut
-				}
-			});
-		}
-	});
+    // Empêche la soumission avec la touche Entrée
+    form.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault(); // Bloque l'action par défaut
+      }
+    });
+  }
+});
+
 </script>
 
 
